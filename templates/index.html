@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main class="min-h-screen flex flex-col items-center justify-center relative overflow-hidden px-6 pt-20">
+    <div class="absolute top-1/4 -left-20 w-96 h-96 bg-primary-fixed-dim/20 rounded-full blur-[100px]"></div>
+    
+    <div class="relative z-10 flex flex-col items-center">
+        <div class="mb-8 text-center max-w-lg">
+            <h1 class="font-headline text-primary font-extrabold text-3xl md:text-6xl mb-4">
+                FOR OPRAH AND OPRAH ONLY <span class="italic text-secondary"> </span> 
+            </h1>
+        </div>
+        
+        <a href="/message" class="group relative flex flex-col items-center justify-center hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-primary blur-3xl opacity-20 group-hover:opacity-30 transition-opacity rounded-full"></div>
+            
+            <div class="animate-heart-pulse relative z-10">
+                <span class="material-symbols-outlined text-[160px] md:text-[220px] text-primary" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
+            </div>
+            
+            <div class="mt-12 animate-text-pulse">
+                <p class="font-label text-sm uppercase tracking-[0.3em] font-bold text-secondary">
+                    Click the heart
+                </p>
+            </div>
+        </a>
+    </div>
+</main>
+{% endblock %}

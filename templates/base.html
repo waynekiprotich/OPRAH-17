@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Amore {% if active_page == 'home' %}- The Heart{% else %}- The Reveal{% endif %}</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Be+Vietnam+Pro:wght@100..900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "surface-container-lowest": "#ffffff", "primary-container": "#f57799",
+                "secondary": "#94483f", "primary-fixed-dim": "#ffb1c2",
+                "surface": "#fff9e7", "primary": "#a33759", "on-surface-variant": "#554245"
+                /* Keeping it brief, but paste the full colors list here from your previous code if needed! */
+            },
+            "fontFamily": { "headline": ["Plus Jakarta Sans"], "body": ["Be Vietnam Pro"], "label": ["Be Vietnam Pro"] }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body min-h-screen flex flex-col">
+
+    <header class="bg-[#fff9e7] flex justify-between items-center w-full px-8 py-4 fixed top-0 z-40">
+        <div class="text-2xl font-bold italic text-[#a33759]">Amore</div>
+        <nav class="hidden md:flex gap-8 items-center">
+            <a href="/" class="{% if active_page == 'home' %}text-[#a33759] font-bold border-b-2 border-[#a33759]{% else %}text-[#94483f]/60 hover:opacity-80{% endif %} font-['Plus_Jakarta_Sans'] transition-opacity duration-300">Heart</a>
+            <a href="/message" class="{% if active_page == 'message' %}text-[#a33759] font-bold border-b-2 border-[#a33759]{% else %}text-[#94483f]/60 hover:opacity-80{% endif %} font-['Plus_Jakarta_Sans'] transition-opacity duration-300">Message</a>
+        </nav>
+        <div class="flex items-center gap-4">
+            <button class="text-[#a33759] hover:opacity-80 transition-opacity duration-300">
+                <span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+            </button>
+        </div>
+    </header>
+
+    {% block content %}{% endblock %}
+
+    <nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 bg-[#fff9e7]/90 backdrop-blur-xl rounded-t-[2rem]">
+        <a href="/" class="flex flex-col items-center justify-center rounded-full px-6 py-2 transition-transform duration-500 {% if active_page == 'home' %}bg-[#f57799]/20 text-[#a33759] animate-pulse{% else %}text-[#94483f]/50 hover:scale-110{% endif %}">
+            <span class="material-symbols-outlined" data-icon="favorite" {% if active_page == 'home' %}style="font-variation-settings: 'FILL' 1;"{% endif %}>favorite</span>
+            <span class="text-[10px] font-bold uppercase tracking-widest mt-1">Heart</span>
+        </a>
+        <a href="/message" class="flex flex-col items-center justify-center rounded-full px-6 py-2 transition-transform duration-500 {% if active_page == 'message' %}bg-[#f57799]/20 text-[#a33759] active:animate-pulse{% else %}text-[#94483f]/50 hover:scale-110{% endif %}">
+            <span class="material-symbols-outlined" data-icon="auto_stories" {% if active_page == 'message' %}style="font-variation-settings: 'FILL' 1;"{% endif %}>auto_stories</span>
+            <span class="text-[10px] font-bold uppercase tracking-widest mt-1">Message</span>
+        </a>
+    </nav>
+    <div class="emoji-container">
+        <div class="float-emoji">🌸</div>
+        <div class="float-emoji">💖</div>
+        <div class="float-text">Wayne loves Oprah</div>
+        <div class="float-emoji">🌺</div>
+        <div class="float-emoji">✨</div>
+        <div class="float-text">Wayne loves you</div>
+        <div class="float-emoji">🌷</div>
+        <div class="float-emoji">💕</div>
+        <div class="float-text">❤️ Wayne and Oprah</div>
+        <div class="float-emoji">🌹</div>
+    </div>
+</body>
+</html>
